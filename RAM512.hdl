@@ -14,12 +14,12 @@ CHIP RAM512 {
 
     PARTS:
     //// Replace this comment with your code.
-    // 1) Repartir load a una sola RAM64, según address[6..8]
+    // repartir load a una sola RAM64, según address
     DMux8Way(in=load, sel=address[6..8],
              a=load0, b=load1, c=load2, d=load3,
              e=load4, f=load5, g=load6, h=load7);
 
-    // 2) Ocho RAM64, todas reciben in y la dirección interna address[0..5]
+    // 8 RAM64, todas reciben in y la dirección interna address
     RAM64(in=in, load=load0, address=address[0..5], out=o0);
     RAM64(in=in, load=load1, address=address[0..5], out=o1);
     RAM64(in=in, load=load2, address=address[0..5], out=o2);
@@ -29,7 +29,7 @@ CHIP RAM512 {
     RAM64(in=in, load=load6, address=address[0..5], out=o6);
     RAM64(in=in, load=load7, address=address[0..5], out=o7);
 
-    // 3) Escoger cuál RAM64 se lee, según address[6..8]
+    //   cuál RAM64 se lee
     Mux8Way16(a=o0, b=o1, c=o2, d=o3,
               e=o4, f=o5, g=o6, h=o7,
               sel=address[6..8], out=out);
