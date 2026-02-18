@@ -14,12 +14,12 @@ CHIP RAM64 {
 
     PARTS:
     //// Replace this comment with your code.
-    // 1) Seleccionar cuál RAM8 recibe el load (según address[3..5])
+    // seleccionar cuál RAM8 recibe el load 
     DMux8Way(in=load, sel=address[3..5],
              a=load0, b=load1, c=load2, d=load3,
              e=load4, f=load5, g=load6, h=load7);
 
-    // 2) Ocho RAM8 (cada una tiene 8 palabras)
+    // 2) Ocho RAM8 
     RAM8(in=in, load=load0, address=address[0..2], out=o0);
     RAM8(in=in, load=load1, address=address[0..2], out=o1);
     RAM8(in=in, load=load2, address=address[0..2], out=o2);
@@ -29,7 +29,7 @@ CHIP RAM64 {
     RAM8(in=in, load=load6, address=address[0..2], out=o6);
     RAM8(in=in, load=load7, address=address[0..2], out=o7);
 
-    // 3) Escoger qué RAM8 se lee (según address[3..5])
+    // 3) sscoger qué RAM8 se lee 
     Mux8Way16(a=o0, b=o1, c=o2, d=o3,
               e=o4, f=o5, g=o6, h=o7,
               sel=address[3..5], out=out);
