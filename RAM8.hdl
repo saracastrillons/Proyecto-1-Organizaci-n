@@ -14,12 +14,12 @@ CHIP RAM8 {
 
     PARTS:
     //// Replace this comment with your code.
-    // 1) Convertir load en 8 señales: solo una queda en 1 según address
+    // 1) convertir load en 8 señales
     DMux8Way(in=load, sel=address,
              a=load0, b=load1, c=load2, d=load3,
              e=load4, f=load5, g=load6, h=load7);
 
-    // 2) Ocho registros de 16 bits (cada uno guarda una palabra)
+    // 8registros de 16 bits
     Register(in=in, load=load0, out=o0);
     Register(in=in, load=load1, out=o1);
     Register(in=in, load=load2, out=o2);
@@ -29,7 +29,7 @@ CHIP RAM8 {
     Register(in=in, load=load6, out=o6);
     Register(in=in, load=load7, out=o7);
 
-    // 3) Elegir cuál registro se muestra en la salida según address
+    // cuál registro se muestra en la salida
     Mux8Way16(a=o0, b=o1, c=o2, d=o3,
               e=o4, f=o5, g=o6, h=o7,
               sel=address, out=out);
