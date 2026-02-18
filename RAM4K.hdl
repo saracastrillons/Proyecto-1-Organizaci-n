@@ -19,7 +19,7 @@ CHIP RAM4K {
              a=load0, b=load1, c=load2, d=load3,
              e=load4, f=load5, g=load6, h=load7);
 
-    // 2️ Ocho RAM512
+    // ocho RAM512
     RAM512(in=in, load=load0, address=address[0..8], out=o0);
     RAM512(in=in, load=load1, address=address[0..8], out=o1);
     RAM512(in=in, load=load2, address=address[0..8], out=o2);
@@ -29,7 +29,7 @@ CHIP RAM4K {
     RAM512(in=in, load=load6, address=address[0..8], out=o6);
     RAM512(in=in, load=load7, address=address[0..8], out=o7);
 
-    // 3️ Escoger cuál RAM512 se lee
+    // scoger cuál RAM512 se lee
     Mux8Way16(a=o0, b=o1, c=o2, d=o3,
               e=o4, f=o5, g=o6, h=o7,
               sel=address[9..11], out=out);
